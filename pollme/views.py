@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 import datetime
 
 def current_datetime(request):
@@ -7,5 +8,8 @@ def current_datetime(request):
     return HttpResponse(html)
 
 def home(request):
-	html = "<html><body><h1>This is my home page</h1></body></html>"
-	return HttpResponse(html)
+	#html = "<html><body><h1>This is my home page</h1></body></html>"
+	#return HttpResponse(html)
+	now = datetime.datetime.now()
+	context = {'datetime_now' :now}
+	return render(request, 'home.html', context)
